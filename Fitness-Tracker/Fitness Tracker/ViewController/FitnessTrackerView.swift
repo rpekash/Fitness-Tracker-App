@@ -11,6 +11,7 @@ struct FitnessTrackerView: View {
     @State private var isBodyWeightNavigate = false
     @State private var isMarcoNavigate = false
     @State private var isWorkoutNavigate = false
+    @State private var isSettingsNavigate = false
 
 
     var body: some View {
@@ -54,6 +55,7 @@ struct FitnessTrackerView: View {
                      
                 }
 
+
                 
                 // WorkoutTracker BUTTON:
                 
@@ -69,6 +71,24 @@ struct FitnessTrackerView: View {
                     Image("Workout")
                         .resizable()
                         .frame(width: 60, height: 60)
+                        .foregroundColor(.blue)
+                }
+                
+                
+                // Settings BUTTON:
+                
+                NavigationLink(destination: SettingsView(), isActive: $isSettingsNavigate) {
+                    EmptyView()
+                }
+                
+                // Button that when tapped, changes the state and activates the NavigationLink
+                Button(action: {
+                    isSettingsNavigate = true
+                }) {
+                    // Scale button content here
+                    Image("Settings")
+                        .resizable()
+                        .frame(width: 50, height: 50)
                         .foregroundColor(.blue)
                 }
             }

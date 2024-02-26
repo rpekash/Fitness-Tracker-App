@@ -11,6 +11,7 @@
 		AD224C8C2B870A370003A7AF /* BodyWeightView.swift in Sources */ = {isa = PBXBuildFile; fileRef = AD224C8B2B870A370003A7AF /* BodyWeightView.swift */; };
 		AD224C902B881B390003A7AF /* Media.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = AD224C8F2B881B390003A7AF /* Media.xcassets */; };
 		AD224C942B881DE50003A7AF /* MacrosView.swift in Sources */ = {isa = PBXBuildFile; fileRef = AD224C932B881DE50003A7AF /* MacrosView.swift */; };
+		AD77319A2B8C34DD003D8ECE /* SettingsView.swift in Sources */ = {isa = PBXBuildFile; fileRef = AD7731992B8C34DD003D8ECE /* SettingsView.swift */; };
 		AD9A1E7E2B7D7F0C00721488 /* Fitness_TrackerApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = AD9A1E7D2B7D7F0C00721488 /* Fitness_TrackerApp.swift */; };
 		AD9A1E802B7D7F0C00721488 /* FitnessTrackerView.swift in Sources */ = {isa = PBXBuildFile; fileRef = AD9A1E7F2B7D7F0C00721488 /* FitnessTrackerView.swift */; };
 		AD9A1E822B7D7F0E00721488 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = AD9A1E812B7D7F0E00721488 /* Assets.xcassets */; };
@@ -42,6 +43,7 @@
 		AD224C8B2B870A370003A7AF /* BodyWeightView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BodyWeightView.swift; sourceTree = "<group>"; };
 		AD224C8F2B881B390003A7AF /* Media.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Media.xcassets; sourceTree = "<group>"; };
 		AD224C932B881DE50003A7AF /* MacrosView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MacrosView.swift; sourceTree = "<group>"; };
+		AD7731992B8C34DD003D8ECE /* SettingsView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingsView.swift; sourceTree = "<group>"; };
 		AD9A1E7A2B7D7F0C00721488 /* Fitness Tracker.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "Fitness Tracker.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		AD9A1E7D2B7D7F0C00721488 /* Fitness_TrackerApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Fitness_TrackerApp.swift; sourceTree = "<group>"; };
 		AD9A1E7F2B7D7F0C00721488 /* FitnessTrackerView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FitnessTrackerView.swift; sourceTree = "<group>"; };
@@ -152,6 +154,7 @@
 				AD224C8B2B870A370003A7AF /* BodyWeightView.swift */,
 				AD224C932B881DE50003A7AF /* MacrosView.swift */,
 				AD0D65F02B88326200EDEB14 /* WorkoutView.swift */,
+				AD7731992B8C34DD003D8ECE /* SettingsView.swift */,
 				AD224C8F2B881B390003A7AF /* Media.xcassets */,
 			);
 			path = ViewController;
@@ -291,6 +294,7 @@
 				AD9A1E802B7D7F0C00721488 /* FitnessTrackerView.swift in Sources */,
 				AD9A1E7E2B7D7F0C00721488 /* Fitness_TrackerApp.swift in Sources */,
 				AD224C8C2B870A370003A7AF /* BodyWeightView.swift in Sources */,
+				AD77319A2B8C34DD003D8ECE /* SettingsView.swift in Sources */,
 				AD224C942B881DE50003A7AF /* MacrosView.swift in Sources */,
 				AD0D65F12B88326200EDEB14 /* WorkoutView.swift in Sources */,
 			);
