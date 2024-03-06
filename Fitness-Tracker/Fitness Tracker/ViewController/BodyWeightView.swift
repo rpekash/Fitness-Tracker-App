@@ -6,11 +6,16 @@
 //
 
 import SwiftUI
+import Charts
 
 struct BodyWeightView: View 
 {
     var body: some View 
     {
+//     LineView(data:[2,3,2,3], title: "BodyWieghtTracked");
+        
+        
+        
         Text("BodyWeight Tracker")
     }
 }

@@ -44,6 +44,7 @@
 		AD224C8F2B881B390003A7AF /* Media.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Media.xcassets; sourceTree = "<group>"; };
 		AD224C932B881DE50003A7AF /* MacrosView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MacrosView.swift; sourceTree = "<group>"; };
 		AD7731992B8C34DD003D8ECE /* SettingsView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingsView.swift; sourceTree = "<group>"; };
+		AD8514F72B99213F00D728F0 /* README.md */ = {isa = PBXFileReference; lastKnownFileType = net.daringfireball.markdown; path = README.md; sourceTree = "<group>"; };
 		AD9A1E7A2B7D7F0C00721488 /* Fitness Tracker.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "Fitness Tracker.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		AD9A1E7D2B7D7F0C00721488 /* Fitness_TrackerApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Fitness_TrackerApp.swift; sourceTree = "<group>"; };
 		AD9A1E7F2B7D7F0C00721488 /* FitnessTrackerView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FitnessTrackerView.swift; sourceTree = "<group>"; };
@@ -85,6 +86,7 @@
 		AD9A1E712B7D7F0C00721488 = {
 			isa = PBXGroup;
 			children = (
+				AD8514F72B99213F00D728F0 /* README.md */,
 				AD9A1E7C2B7D7F0C00721488 /* Fitness Tracker */,
 				AD9A1E8E2B7D7F0E00721488 /* Fitness TrackerTests */,
 				AD9A1E982B7D7F0E00721488 /* Fitness TrackerUITests */,

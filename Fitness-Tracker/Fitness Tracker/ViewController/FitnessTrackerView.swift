@@ -38,7 +38,6 @@ struct FitnessTrackerView: View {
                 
                 // MarcoTracker BUTTON:
 
-                
                 NavigationLink(destination: MacrosView(), isActive: $isMarcoNavigate) {
                     EmptyView()
                 }
@@ -55,8 +54,6 @@ struct FitnessTrackerView: View {
                      
                 }
 
-
-                
                 // WorkoutTracker BUTTON:
                 
                 NavigationLink(destination: WorkoutView(), isActive: $isWorkoutNavigate) {
@@ -73,7 +70,6 @@ struct FitnessTrackerView: View {
                         .frame(width: 60, height: 60)
                         .foregroundColor(.blue)
                 }
-                
                 
                 // Settings BUTTON:
                 
