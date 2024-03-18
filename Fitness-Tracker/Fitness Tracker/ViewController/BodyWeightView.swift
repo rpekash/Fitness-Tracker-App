@@ -5,21 +5,34 @@
 //  Created by Kastrijot Syla on 2/21/24.
 //
 
+
+import UIKit
 import SwiftUI
-import Charts
+import SnapKit
 
-struct BodyWeightView: View 
-{
-    var body: some View 
-    {
-//     LineView(data:[2,3,2,3], title: "BodyWieghtTracked");
-        
-        
-        
-        Text("BodyWeight Tracker")
+
+
+class BodyWeightView: UIViewController {
+    
+    override func viewDidLoad() {
+        super.viewDidLoad()
+        setupView()
     }
-}
-
-#Preview {
-    BodyWeightView()
+    
+    func setupView(){
+        let controller = UIHostingController(rootView: BodyWeightHistory())
+        guard let bodyweightView = controller.view else{
+            return
+        }
+        
+        view.addSubview(bodyweightView)
+        
+        bodyweightView.snp.makeConstraints { make in
+            make.centerY.equalToSuperview()
+            make.leading.equalToSuperview().offset(15)
+            make.trailing.equalToSuperview().inset(15)
+            make.height.equalTo(500)
+        }
+                                        
+    }
 }

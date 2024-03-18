@@ -3,7 +3,7 @@
 	archiveVersion = 1;
 	classes = {
 	};
-	objectVersion = 56;
+	objectVersion = 60;
 	objects = {
 
 /* Begin PBXBuildFile section */
@@ -19,6 +19,9 @@
 		AD9A1E902B7D7F0E00721488 /* Fitness_TrackerTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = AD9A1E8F2B7D7F0E00721488 /* Fitness_TrackerTests.swift */; };
 		AD9A1E9A2B7D7F0E00721488 /* Fitness_TrackerUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = AD9A1E992B7D7F0E00721488 /* Fitness_TrackerUITests.swift */; };
 		AD9A1E9C2B7D7F0E00721488 /* Fitness_TrackerUITestsLaunchTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = AD9A1E9B2B7D7F0E00721488 /* Fitness_TrackerUITestsLaunchTests.swift */; };
+		ADA983F92BA7D8EB00E74946 /* SnapKit in Frameworks */ = {isa = PBXBuildFile; productRef = ADA983F82BA7D8EB00E74946 /* SnapKit */; };
+		ADA983FB2BA7DB4200E74946 /* BodyWeightViewRepresentable.swift in Sources */ = {isa = PBXBuildFile; fileRef = ADA983FA2BA7DB4200E74946 /* BodyWeightViewRepresentable.swift */; };
+		ADA983FD2BA7F1BA00E74946 /* BodyWeightHistory.swift in Sources */ = {isa = PBXBuildFile; fileRef = ADA983FC2BA7F1BA00E74946 /* BodyWeightHistory.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -56,6 +59,8 @@
 		AD9A1E952B7D7F0E00721488 /* Fitness TrackerUITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = "Fitness TrackerUITests.xctest"; sourceTree = BUILT_PRODUCTS_DIR; };
 		AD9A1E992B7D7F0E00721488 /* Fitness_TrackerUITests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Fitness_TrackerUITests.swift; sourceTree = "<group>"; };
 		AD9A1E9B2B7D7F0E00721488 /* Fitness_TrackerUITestsLaunchTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Fitness_TrackerUITestsLaunchTests.swift; sourceTree = "<group>"; };
+		ADA983FA2BA7DB4200E74946 /* BodyWeightViewRepresentable.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BodyWeightViewRepresentable.swift; sourceTree = "<group>"; };
+		ADA983FC2BA7F1BA00E74946 /* BodyWeightHistory.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BodyWeightHistory.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -63,6 +68,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				ADA983F92BA7D8EB00E74946 /* SnapKit in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -153,11 +159,13 @@
 			isa = PBXGroup;
 			children = (
 				AD9A1E7F2B7D7F0C00721488 /* FitnessTrackerView.swift */,
-				AD224C8B2B870A370003A7AF /* BodyWeightView.swift */,
 				AD224C932B881DE50003A7AF /* MacrosView.swift */,
 				AD0D65F02B88326200EDEB14 /* WorkoutView.swift */,
 				AD7731992B8C34DD003D8ECE /* SettingsView.swift */,
 				AD224C8F2B881B390003A7AF /* Media.xcassets */,
+				AD224C8B2B870A370003A7AF /* BodyWeightView.swift */,
+				ADA983FA2BA7DB4200E74946 /* BodyWeightViewRepresentable.swift */,
+				ADA983FC2BA7F1BA00E74946 /* BodyWeightHistory.swift */,
 			);
 			path = ViewController;
 			sourceTree = "<group>";
@@ -178,6 +186,9 @@
 			dependencies = (
 			);
 			name = "Fitness Tracker";
+			packageProductDependencies = (
+				ADA983F82BA7D8EB00E74946 /* SnapKit */,
+			);
 			productName = "Fitness Tracker";
 			productReference = AD9A1E7A2B7D7F0C00721488 /* Fitness Tracker.app */;
 			productType = "com.apple.product-type.application";
@@ -250,6 +261,9 @@
 				Base,
 			);
 			mainGroup = AD9A1E712B7D7F0C00721488;
+			packageReferences = (
+				ADA983F72BA7D89800E74946 /* XCLocalSwiftPackageReference "../../SnapKit-develop" */,
+			);
 			productRefGroup = AD9A1E7B2B7D7F0C00721488 /* Products */;
 			projectDirPath = "";
 			projectRoot = "";
@@ -295,10 +309,12 @@
 			files = (
 				AD9A1E802B7D7F0C00721488 /* FitnessTrackerView.swift in Sources */,
 				AD9A1E7E2B7D7F0C00721488 /* Fitness_TrackerApp.swift in Sources */,
+				ADA983FB2BA7DB4200E74946 /* BodyWeightViewRepresentable.swift in Sources */,
 				AD224C8C2B870A370003A7AF /* BodyWeightView.swift in Sources */,
 				AD77319A2B8C34DD003D8ECE /* SettingsView.swift in Sources */,
 				AD224C942B881DE50003A7AF /* MacrosView.swift in Sources */,
 				AD0D65F12B88326200EDEB14 /* WorkoutView.swift in Sources */,
+				ADA983FD2BA7F1BA00E74946 /* BodyWeightHistory.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -655,6 +671,20 @@
 			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
+
+/* Begin XCLocalSwiftPackageReference section */
+		ADA983F72BA7D89800E74946 /* XCLocalSwiftPackageReference "../../SnapKit-develop" */ = {
+			isa = XCLocalSwiftPackageReference;
+			relativePath = "../../SnapKit-develop";
+		};
+/* End XCLocalSwiftPackageReference section */
+
+/* Begin XCSwiftPackageProductDependency section */
+		ADA983F82BA7D8EB00E74946 /* SnapKit */ = {
+			isa = XCSwiftPackageProductDependency;
+			productName = SnapKit;
+		};
+/* End XCSwiftPackageProductDependency section */
 	};
 	rootObject = AD9A1E722B7D7F0C00721488 /* Project object */;
 }

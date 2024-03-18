@@ -18,9 +18,11 @@ struct FitnessTrackerView: View {
         NavigationStack {
             VStack {
                 // Invisible NavigationLink that will be activated by the state variable
-                NavigationLink(destination: BodyWeightView(), isActive:$isBodyWeightNavigate){
+                NavigationLink(destination: BodyWeightViewRepresentable(), isActive: $isBodyWeightNavigate) {
                     EmptyView()
                 }
+
+                
                 
                 // BodyWeightTracker BUTTON:
 
