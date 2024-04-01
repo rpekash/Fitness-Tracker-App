@@ -29,9 +29,9 @@ class BodyWeightView: UIViewController {
         
         bodyweightView.snp.makeConstraints { make in
             make.centerY.equalToSuperview()
-            make.leading.equalToSuperview().offset(15)
-            make.trailing.equalToSuperview().inset(15)
-            make.height.equalTo(500)
+            make.leading.equalToSuperview().offset(10)
+            make.trailing.equalToSuperview().inset(10)
+            make.height.equalTo(400)
         }
                                         
     }

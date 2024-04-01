@@ -4,63 +4,97 @@
 //
 //  Created by Kastrijot Syla on 3/17/24.
 //
-
 import SwiftUI
 import Charts
-import Foundation
-
-struct WeightModel: Identifiable  {
-    let id = UUID()
-    let amount: Double
-    let createAt: Date
-}
 
 struct BodyWeightHistory: View {
-        let list = [
-            WeightModel(amount: 200, createAt: dateFormatter.date(from: "5/12/2023") ?? Date()),
-            WeightModel(amount: 210, createAt: dateFormatter.date(from: "5/15/2023") ?? Date()),
-            WeightModel(amount: 200, createAt: dateFormatter.date(from: "5/18/2023") ?? Date()),
-            WeightModel(amount: 225, createAt: dateFormatter.date(from: "5/23/2023") ?? Date()),
-            WeightModel(amount: 210, createAt: dateFormatter.date(from: "5/24/2023") ?? Date()),
-            WeightModel(amount: 208, createAt: dateFormatter.date(from: "5/28/2023") ?? Date()),
-            WeightModel(amount: 230, createAt: dateFormatter.date(from: "6/1/2023") ?? Date()),
-
-        ]
+    @State private var list: [WeightModel] = []
+    @State private var newWeight: String = ""
+    @State private var newDate = Date()
     
-    func formatDate(_ date: Date) -> String {
-        let cal = Calendar.current
-        let dateComponents = cal.dateComponents([.day, .month], from: date)
-        guard let day = dateComponents.day, let month = dateComponents.month else {
-            return "-"
-        }
-        return "\(day)/\(month)"
-        
+    static var dateFormatter: DateFormatter = {
+        let df = DateFormatter()
+        df.dateFormat = "MM/dd/yyyy"
+        return df
+    }()
+    
+    private let userDefaultsKey = "weightData"
+    
+    init() {
+        _list = State(initialValue: loadWeights())
     }
-        
-        static var dateFormatter: DateFormatter = {
-            let df = DateFormatter()
-            df.dateFormat = "MM/dd/yy"
-            return df
-        }()
-        
-        var body: some View {
-            Chart(list){ weightModel in
+    
+    var body: some View {
+        VStack {
+            // Inputs and Add Button
+            TextField("Enter new weight", text: $newWeight)
+                .keyboardType(.decimalPad)
+                .padding()
+            DatePicker("Select Date", selection: $newDate, displayedComponents: .date)
+                .padding()
+            Button("Add Weight") {
+                addWeight()
+            }
+            .padding()
+            
+            // Chart Displaying Weights
+            Chart(list) { weightModel in
                 LineMark(
-                    x: .value("Month", formatDate(weightModel.createAt)),
-                    y: .value("Weight", weightModel.amount)
-                ).foregroundStyle(.red)
-                    .interpolationMethod(.cardinal)
-                    .foregroundStyle(.red)
+                    x: .value("Date", formatDate(weightModel.createAt)),
+                    y: .value("Weight", weightModel.weight)
+                ).interpolationMethod(.cardinal)
                 
                 PointMark(
-                    x: .value("Month", formatDate(weightModel.createAt)),
-                    y: .value("Weight", weightModel.amount)
-                ).foregroundStyle(.black)
-                
-                
-            }.chartYAxis {
-                AxisMarks(position: . leading)
+                    x: .value("Date", formatDate(weightModel.createAt)),
+                    y: .value("Weight", weightModel.weight)
+                )
+            }
+            .chartYAxis {
+                AxisMarks(position: .leading)
+            }
+            
+            // List for managing weights
+            List {
+                ForEach(list) { weightEntry in
+                    Text("\(weightEntry.weight) lbs on \(formatDate(weightEntry.createAt))")
+                }
+                .onDelete(perform: deleteWeight)
             }
         }
     }
-
+    
+    private func addWeight() {
+        guard let weight = Double(newWeight) else { return }
+        let weightEntry = WeightModel(weight: weight, createAt: newDate)
+        list.append(weightEntry)
+        saveWeights()
+        newWeight = ""
+        newDate = Date()
+    }
+    
+    private func deleteWeight(at offsets: IndexSet) {
+        list.remove(atOffsets: offsets)
+        saveWeights()
+    }
+    
+    private func loadWeights() -> [WeightModel] {
+        if let savedData = UserDefaults.standard.data(forKey: userDefaultsKey) {
+            let decoder = JSONDecoder()
+            if let loadedWeights = try? decoder.decode([WeightModel].self, from: savedData) {
+                return loadedWeights
+            }
+        }
+        return []
+    }
+    
+    private func saveWeights() {
+        let encoder = JSONEncoder()
+        if let encoded = try? encoder.encode(list) {
+            UserDefaults.standard.set(encoded, forKey: userDefaultsKey)
+        }
+    }
+    
+    func formatDate(_ date: Date) -> String {
+        Self.dateFormatter.string(from: date)
+    }
+}

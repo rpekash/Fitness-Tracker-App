@@ -3,7 +3,7 @@
 	archiveVersion = 1;
 	classes = {
 	};
-	objectVersion = 60;
+	objectVersion = 56;
 	objects = {
 
 /* Begin PBXBuildFile section */
@@ -22,6 +22,10 @@
 		ADA983F92BA7D8EB00E74946 /* SnapKit in Frameworks */ = {isa = PBXBuildFile; productRef = ADA983F82BA7D8EB00E74946 /* SnapKit */; };
 		ADA983FB2BA7DB4200E74946 /* BodyWeightViewRepresentable.swift in Sources */ = {isa = PBXBuildFile; fileRef = ADA983FA2BA7DB4200E74946 /* BodyWeightViewRepresentable.swift */; };
 		ADA983FD2BA7F1BA00E74946 /* BodyWeightHistory.swift in Sources */ = {isa = PBXBuildFile; fileRef = ADA983FC2BA7F1BA00E74946 /* BodyWeightHistory.swift */; };
+		ADA983FF2BA7F64100E74946 /* UIViewRepresentable.swift in Sources */ = {isa = PBXBuildFile; fileRef = ADA983FE2BA7F64100E74946 /* UIViewRepresentable.swift */; };
+		ADA984022BA7F6A300E74946 /* DGCharts in Frameworks */ = {isa = PBXBuildFile; productRef = ADA984012BA7F6A300E74946 /* DGCharts */; };
+		ADA984082BA7F8E600E74946 /* DGCharts in Frameworks */ = {isa = PBXBuildFile; productRef = ADA984072BA7F8E600E74946 /* DGCharts */; };
+		ADD0B1112BAB88E2009923E3 /* WeightModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = ADD0B1102BAB88E2009923E3 /* WeightModel.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -61,6 +65,8 @@
 		AD9A1E9B2B7D7F0E00721488 /* Fitness_TrackerUITestsLaunchTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Fitness_TrackerUITestsLaunchTests.swift; sourceTree = "<group>"; };
 		ADA983FA2BA7DB4200E74946 /* BodyWeightViewRepresentable.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BodyWeightViewRepresentable.swift; sourceTree = "<group>"; };
 		ADA983FC2BA7F1BA00E74946 /* BodyWeightHistory.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BodyWeightHistory.swift; sourceTree = "<group>"; };
+		ADA983FE2BA7F64100E74946 /* UIViewRepresentable.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UIViewRepresentable.swift; sourceTree = "<group>"; };
+		ADD0B1102BAB88E2009923E3 /* WeightModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WeightModel.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -68,6 +74,8 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				ADA984022BA7F6A300E74946 /* DGCharts in Frameworks */,
+				ADA984082BA7F8E600E74946 /* DGCharts in Frameworks */,
 				ADA983F92BA7D8EB00E74946 /* SnapKit in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -166,6 +174,8 @@
 				AD224C8B2B870A370003A7AF /* BodyWeightView.swift */,
 				ADA983FA2BA7DB4200E74946 /* BodyWeightViewRepresentable.swift */,
 				ADA983FC2BA7F1BA00E74946 /* BodyWeightHistory.swift */,
+				ADA983FE2BA7F64100E74946 /* UIViewRepresentable.swift */,
+				ADD0B1102BAB88E2009923E3 /* WeightModel.swift */,
 			);
 			path = ViewController;
 			sourceTree = "<group>";
@@ -188,6 +198,8 @@
 			name = "Fitness Tracker";
 			packageProductDependencies = (
 				ADA983F82BA7D8EB00E74946 /* SnapKit */,
+				ADA984012BA7F6A300E74946 /* DGCharts */,
+				ADA984072BA7F8E600E74946 /* DGCharts */,
 			);
 			productName = "Fitness Tracker";
 			productReference = AD9A1E7A2B7D7F0C00721488 /* Fitness Tracker.app */;
@@ -262,7 +274,8 @@
 			);
 			mainGroup = AD9A1E712B7D7F0C00721488;
 			packageReferences = (
-				ADA983F72BA7D89800E74946 /* XCLocalSwiftPackageReference "../../SnapKit-develop" */,
+				ADA984062BA7F8E600E74946 /* XCRemoteSwiftPackageReference "Charts" */,
+				ADA984092BA7F90600E74946 /* XCRemoteSwiftPackageReference "SnapKit" */,
 			);
 			productRefGroup = AD9A1E7B2B7D7F0C00721488 /* Products */;
 			projectDirPath = "";
@@ -309,8 +322,10 @@
 			files = (
 				AD9A1E802B7D7F0C00721488 /* FitnessTrackerView.swift in Sources */,
 				AD9A1E7E2B7D7F0C00721488 /* Fitness_TrackerApp.swift in Sources */,
+				ADA983FF2BA7F64100E74946 /* UIViewRepresentable.swift in Sources */,
 				ADA983FB2BA7DB4200E74946 /* BodyWeightViewRepresentable.swift in Sources */,
 				AD224C8C2B870A370003A7AF /* BodyWeightView.swift in Sources */,
+				ADD0B1112BAB88E2009923E3 /* WeightModel.swift in Sources */,
 				AD77319A2B8C34DD003D8ECE /* SettingsView.swift in Sources */,
 				AD224C942B881DE50003A7AF /* MacrosView.swift in Sources */,
 				AD0D65F12B88326200EDEB14 /* WorkoutView.swift in Sources */,
@@ -672,17 +687,38 @@
 		};
 /* End XCConfigurationList section */
 
-/* Begin XCLocalSwiftPackageReference section */
-		ADA983F72BA7D89800E74946 /* XCLocalSwiftPackageReference "../../SnapKit-develop" */ = {
-			isa = XCLocalSwiftPackageReference;
-			relativePath = "../../SnapKit-develop";
+/* Begin XCRemoteSwiftPackageReference section */
+		ADA984062BA7F8E600E74946 /* XCRemoteSwiftPackageReference "Charts" */ = {
+			isa = XCRemoteSwiftPackageReference;
+			repositoryURL = "https://github.com/danielgindi/Charts.git";
+			requirement = {
+				kind = upToNextMajorVersion;
+				minimumVersion = 5.1.0;
+			};
 		};
-/* End XCLocalSwiftPackageReference section */
+		ADA984092BA7F90600E74946 /* XCRemoteSwiftPackageReference "SnapKit" */ = {
+			isa = XCRemoteSwiftPackageReference;
+			repositoryURL = "https://github.com/SnapKit/SnapKit";
+			requirement = {
+				kind = upToNextMajorVersion;
+				minimumVersion = 5.7.1;
+			};
+		};
+/* End XCRemoteSwiftPackageReference section */
 
 /* Begin XCSwiftPackageProductDependency section */
 		ADA983F82BA7D8EB00E74946 /* SnapKit */ = {
 			isa = XCSwiftPackageProductDependency;
 			productName = SnapKit;
+		};
+		ADA984012BA7F6A300E74946 /* DGCharts */ = {
+			isa = XCSwiftPackageProductDependency;
+			productName = DGCharts;
+		};
+		ADA984072BA7F8E600E74946 /* DGCharts */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = ADA984062BA7F8E600E74946 /* XCRemoteSwiftPackageReference "Charts" */;
+			productName = DGCharts;
 		};
 /* End XCSwiftPackageProductDependency section */
 	};
