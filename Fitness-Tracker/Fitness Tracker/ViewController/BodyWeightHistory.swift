@@ -36,27 +36,28 @@ struct BodyWeightHistory: View {
                 addWeight()
             }
             .padding()
-            
-            // Chart Displaying Weights
-            Chart(list) { weightModel in
-                LineMark(
-                    x: .value("Date", formatDate(weightModel.createAt)),
-                    y: .value("Weight", weightModel.weight)
-                ).interpolationMethod(.cardinal)
-                
-                PointMark(
-                    x: .value("Date", formatDate(weightModel.createAt)),
-                    y: .value("Weight", weightModel.weight)
-                )
-            }
-            .chartYAxis {
-                AxisMarks(position: .leading)
+            ScrollView{
+                // Chart Displaying Weights
+                Chart(list) { weightModel in
+                    LineMark(
+                        x: .value("Date", formatDate(weightModel.createAt)),
+                        y: .value("Weight", weightModel.weight)
+                    ).interpolationMethod(.cardinal)
+                    
+                    PointMark(
+                        x: .value("Date", formatDate(weightModel.createAt)),
+                        y: .value("Weight", weightModel.weight)
+                    )
+                }
+                .chartYAxis {
+                    AxisMarks(position: .leading)
+                }
             }
             
             // List for managing weights
             List {
                 ForEach(list) { weightEntry in
-                    Text("\(weightEntry.weight) lbs on \(formatDate(weightEntry.createAt))")
+                    Text("\(String(format: "%.2f" ,weightEntry.weight)) lbs on \(formatDate(weightEntry.createAt))")
                 }
                 .onDelete(perform: deleteWeight)
             }

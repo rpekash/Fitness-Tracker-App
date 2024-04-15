@@ -22,7 +22,6 @@
 		ADA983F92BA7D8EB00E74946 /* SnapKit in Frameworks */ = {isa = PBXBuildFile; productRef = ADA983F82BA7D8EB00E74946 /* SnapKit */; };
 		ADA983FB2BA7DB4200E74946 /* BodyWeightViewRepresentable.swift in Sources */ = {isa = PBXBuildFile; fileRef = ADA983FA2BA7DB4200E74946 /* BodyWeightViewRepresentable.swift */; };
 		ADA983FD2BA7F1BA00E74946 /* BodyWeightHistory.swift in Sources */ = {isa = PBXBuildFile; fileRef = ADA983FC2BA7F1BA00E74946 /* BodyWeightHistory.swift */; };
-		ADA983FF2BA7F64100E74946 /* UIViewRepresentable.swift in Sources */ = {isa = PBXBuildFile; fileRef = ADA983FE2BA7F64100E74946 /* UIViewRepresentable.swift */; };
 		ADA984022BA7F6A300E74946 /* DGCharts in Frameworks */ = {isa = PBXBuildFile; productRef = ADA984012BA7F6A300E74946 /* DGCharts */; };
 		ADA984082BA7F8E600E74946 /* DGCharts in Frameworks */ = {isa = PBXBuildFile; productRef = ADA984072BA7F8E600E74946 /* DGCharts */; };
 		ADD0B1112BAB88E2009923E3 /* WeightModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = ADD0B1102BAB88E2009923E3 /* WeightModel.swift */; };
@@ -65,7 +64,6 @@
 		AD9A1E9B2B7D7F0E00721488 /* Fitness_TrackerUITestsLaunchTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Fitness_TrackerUITestsLaunchTests.swift; sourceTree = "<group>"; };
 		ADA983FA2BA7DB4200E74946 /* BodyWeightViewRepresentable.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BodyWeightViewRepresentable.swift; sourceTree = "<group>"; };
 		ADA983FC2BA7F1BA00E74946 /* BodyWeightHistory.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BodyWeightHistory.swift; sourceTree = "<group>"; };
-		ADA983FE2BA7F64100E74946 /* UIViewRepresentable.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UIViewRepresentable.swift; sourceTree = "<group>"; };
 		ADD0B1102BAB88E2009923E3 /* WeightModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WeightModel.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
@@ -174,7 +172,6 @@
 				AD224C8B2B870A370003A7AF /* BodyWeightView.swift */,
 				ADA983FA2BA7DB4200E74946 /* BodyWeightViewRepresentable.swift */,
 				ADA983FC2BA7F1BA00E74946 /* BodyWeightHistory.swift */,
-				ADA983FE2BA7F64100E74946 /* UIViewRepresentable.swift */,
 				ADD0B1102BAB88E2009923E3 /* WeightModel.swift */,
 			);
 			path = ViewController;
@@ -322,7 +319,6 @@
 			files = (
 				AD9A1E802B7D7F0C00721488 /* FitnessTrackerView.swift in Sources */,
 				AD9A1E7E2B7D7F0C00721488 /* Fitness_TrackerApp.swift in Sources */,
-				ADA983FF2BA7F64100E74946 /* UIViewRepresentable.swift in Sources */,
 				ADA983FB2BA7DB4200E74946 /* BodyWeightViewRepresentable.swift in Sources */,
 				AD224C8C2B870A370003A7AF /* BodyWeightView.swift in Sources */,
 				ADD0B1112BAB88E2009923E3 /* WeightModel.swift in Sources */,
