@@ -25,6 +25,7 @@ struct Meal: Identifiable, Codable {
 // View model for managing and storing meals
 class MealManager: ObservableObject {
     @Published var meals: [Meal] = []
+    @Published var searchText = ""
     
     init() {
         loadMeals()
@@ -52,6 +53,14 @@ class MealManager: ObservableObject {
             UserDefaults.standard.set(encoded, forKey: "Meals")
         }
     }
+    
+    func filteredMeals() -> [Meal] {
+        if searchText.isEmpty {
+            return meals
+        } else {
+            return meals.filter { $0.name.lowercased().contains(searchText.lowercased()) }
+        }
+    }
 
     func totalMacros(for date: Date) -> Macros {
         let calendar = Calendar.current
@@ -69,10 +78,10 @@ class MealManager: ObservableObject {
 struct MacrosView: View {
     @ObservedObject var mealManager = MealManager()
     @State private var mealName: String = ""
-    @State private var calories: Int = 0
-    @State private var fat: Double = 0
-    @State private var protein: Double = 0
-    @State private var fiber: Double = 0
+    @State private var calories: String = ""
+    @State private var fat: String = ""
+    @State private var protein: String = ""
+    @State private var fiber: String = ""
     @State private var selectedDate = Date()
     
     var body: some View {
@@ -85,25 +94,29 @@ struct MacrosView: View {
                 
                 Form {
                     TextField("Meal Name", text: $mealName)
-                    TextField("Calories", value: $calories, formatter: NumberFormatter())
-                    TextField("Fat in grams", value: $fat, formatter: NumberFormatter())
-                    TextField("Protein in grams", value: $protein, formatter: NumberFormatter())
-                    TextField("Fiber in grams", value: $fiber, formatter: NumberFormatter())
+                    TextField("Calories", text: $calories)
+                    TextField("Fat in grams", text: $fat)
+                    TextField("Protein in grams", text: $protein)
+                    TextField("Fiber in grams", text: $fiber)
                     Button("Add Meal") {
-                        let newMeal = Meal(name: mealName, date: selectedDate, macros: Macros(calories: calories, fat: fat, protein: protein, fiber: fiber))
-                        mealManager.addMeal(newMeal)
-                        clearForm()
+                        if let cal = Int(calories), let f = Double(fat), let pro = Double(protein), let fib = Double(fiber) {
+                            let newMeal = Meal(name: mealName, date: selectedDate, macros: Macros(calories: cal, fat: f, protein: pro, fiber: fib))
+                            mealManager.addMeal(newMeal)
+                            clearForm()
+                        }
                     }
                 }
 
+                SearchBar(text: $mealManager.searchText)
+
                 List {
-                    ForEach(mealManager.meals.filter { Calendar.current.isDate($0.date, inSameDayAs: selectedDate) }) { meal in
+                    ForEach(mealManager.filteredMeals().filter { Calendar.current.isDate($0.date, inSameDayAs: selectedDate) }) { meal in
                         VStack(alignment: .leading) {
                             Text(meal.name).font(.headline)
                             Text("Calories: \(meal.macros.calories)")
-                            Text("Fat: \(meal.macros.fat)g")
-                            Text("Protein: \(meal.macros.protein)g")
-                            Text("Fiber: \(meal.macros.fiber)g")
+                            Text("Fat: \(formatMacro(meal.macros.fat))g")
+                            Text("Protein: \(formatMacro(meal.macros.protein))g")
+                            Text("Fiber: \(formatMacro(meal.macros.fiber))g")
                         }
                     }
                     .onDelete(perform: mealManager.deleteMeal)
@@ -118,18 +131,53 @@ struct MacrosView: View {
         return Group {
             Text("Daily Totals").font(.headline).padding()
             Text("Calories: \(totals.calories)")
-            Text("Fat: \(totals.fat, specifier: "%.1f")g")
-            Text("Protein: \(totals.protein, specifier: "%.1f")g")
-            Text("Fiber: \(totals.fiber, specifier: "%.1f")g")
+            Text("Fat: \(formatMacro(totals.fat))g")
+            Text("Protein: \(formatMacro(totals.protein))g")
+            Text("Fiber: \(formatMacro(totals.fiber))g")
         }
+    }
+    
+    private func formatMacro(_ value: Double) -> String {
+        String(format: "%.1f", value)
     }
     
     private func clearForm() {
         mealName = ""
-        calories = 0
-        fat = 0
-        protein = 0
-        fiber = 0
+        calories = ""
+        fat = ""
+        protein = ""
+        fiber = ""
+    }
+}
+
+// SwiftUI view for a search bar
+struct SearchBar: View {
+    @Binding var text: String
+
+    var body: some View {
+        TextField("Search meals...", text: $text)
+            .padding(7)
+            .padding(.horizontal, 25)
+            .background(Color(.systemGray6))
+            .cornerRadius(8)
+            .overlay(
+                HStack {
+                    Image(systemName: "magnifyingglass")
+                        .foregroundColor(.gray)
+                        .frame(minWidth: 0, maxWidth: .infinity, alignment: .leading)
+                        .padding(.leading, 8)
+                    
+                    if !text.isEmpty {
+                        Button(action: {
+                            self.text = ""
+                        }) {
+                            Image(systemName: "multiply.circle.fill")
+                                .foregroundColor(.gray)
+                                .padding(.trailing, 8)
+                        }
+                    }
+                }
+            )
     }
 }
 

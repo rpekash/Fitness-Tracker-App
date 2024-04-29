@@ -11,6 +11,7 @@ struct Workout: Identifiable, Codable {
     var name: String
     var reps: Int
     var sets: Int
+    var weight: Int
     var date: Date
 }
 
@@ -19,13 +20,13 @@ struct WorkoutView: View {
     @State private var workoutName: String = ""
     @State private var numberOfReps: String = ""
     @State private var numberOfSets: String = ""
+    @State private var weightLifted: String = ""
     @State private var workouts: [Workout] = [] {
         didSet {
             saveWorkouts()
         }
     }
 
-    // Load workouts from UserDefaults
     private func loadWorkouts() {
         if let data = UserDefaults.standard.data(forKey: "workouts"),
            let savedWorkouts = try? JSONDecoder().decode([Workout].self, from: data) {
@@ -33,14 +34,12 @@ struct WorkoutView: View {
         }
     }
 
-    // Save workouts to UserDefaults
     private func saveWorkouts() {
         if let encoded = try? JSONEncoder().encode(workouts) {
             UserDefaults.standard.set(encoded, forKey: "workouts")
         }
     }
     
-    // Helper method to format and sort the grouped workouts for ForEach
     private func sortedWorkoutGroups() -> [(key: Date, value: [Workout])] {
         let groupedWorkouts = Dictionary(grouping: workouts) { workout in
             Calendar.current.startOfDay(for: workout.date)
@@ -58,6 +57,8 @@ struct WorkoutView: View {
                         .keyboardType(.numberPad)
                     TextField("Number of Sets", text: $numberOfSets)
                         .keyboardType(.numberPad)
+                    TextField("Weight Lifted (lbs)", text: $weightLifted)
+                        .keyboardType(.numberPad)
                     Button("Add Workout") {
                         addWorkout()
                     }
@@ -68,7 +69,7 @@ struct WorkoutView: View {
                         ForEach(workouts) { workout in
                             VStack(alignment: .leading) {
                                 Text(workout.name).font(.headline)
-                                Text("Reps: \(workout.reps), Sets: \(workout.sets)")
+                                Text("Reps: \(workout.reps), Sets: \(workout.sets), Weight: \(workout.weight) lbs")
                             }
                         }
                         .onDelete { offsets in
@@ -83,14 +84,15 @@ struct WorkoutView: View {
     }
 
     private func addWorkout() {
-        guard let reps = Int(numberOfReps), let sets = Int(numberOfSets), !workoutName.isEmpty else {
+        guard let reps = Int(numberOfReps), let sets = Int(numberOfSets), let weight = Int(weightLifted), !workoutName.isEmpty else {
             return // Validation failed
         }
-        let newWorkout = Workout(name: workoutName, reps: reps, sets: sets, date: workoutDate)
+        let newWorkout = Workout(name: workoutName, reps: reps, sets: sets, weight: weight, date: workoutDate)
         workouts.append(newWorkout)
         workoutName = "" // Reset for next entry
         numberOfReps = ""
         numberOfSets = ""
+        weightLifted = "" // Reset weight field
     }
     
     private func deleteWorkouts(date: Date, at offsets: IndexSet) {
