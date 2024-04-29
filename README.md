@@ -17,7 +17,7 @@ These instructions will get you a copy of the project up and running on your loc
 
 1. **Clone the Repository**
 
-   Open Terminal and navigate to the directory where you want to clone the project.
+   Open Terminal and navigate to the directory where you want to clone the project. Then clone this repo.
 
 2. **Run the App**
   
